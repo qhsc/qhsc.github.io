@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <meta charset="UTF-8">
+        <title>dynamic_programming | Rain&#39;s Whisper</title>
+        <meta name="author" content="ame2yuki">
+        <meta name="description" content="thinking...">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <link rel="icon" href="/null">
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css">
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        
+        
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="loading" style="height: 100vh; width: 100vw; left: 0; top: 0; position: fixed; display: flex; z-index: 2147483647; background: #fff; transition: opacity 0.3s ease-out; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none">
+    <div style="width: 50vmin; height: 50vmin; margin: auto; padding: 50px; border-radius: 50%; display: flex; border: solid 10px #a3ddfb">
+        <div style="margin: auto; text-align: center">
+            <h2>LOADING</h2>
+            <p>加载过慢请开启缓存，浏览器默认开启</p>
+            <img src="/images/loading.gif" style="height: 50px; border-radius: 0">
+        </div>
+    </div>
+</div>
+
+        <div id="layout">
+            <transition name="into">
+            <div id="main" v-show="showpage" style="display: -not-none">
+                <nav id="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>RAIN&#39;S WHISPER</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div :class="&quot;phone-menu &quot; + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;RAIN&#39;S WHISPER</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menushow">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>dynamic_programming </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/2/21
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <ul>
+<li><ol start="1049">
+<li>最后一块石头的重量 II</li>
+</ol>
+<ul>
+<li>题目：给定一堆石头，每个石头有重量 <code>stones[i]</code>。执行以下步骤直到只剩一个石头：任选两个石头进行碰撞相消。如果重量相等，则碰撞以后不会留下任何石头；如果重量不等， 两块石头碰撞以后会留下一块石头，重量为两块石头重量的差值。问：留下的石头的重量最小可能是多少？</li>
+<li>解析：<ul>
+<li>分析：每次碰撞都会消去2的整数倍的重量，则最终被消去的重量是 <code>2*x</code>，这里 <code>x</code> 是正整数，还留下 <code>y</code> 重量的石头。则有 <code>sum(stones)=2*x+y</code>。因此，如果我们能把石头分作两堆，并且两堆的差距是最小的，则此时的差距就是 <code>y</code> ，也就是题目所求。</li>
+<li>解法：上述问题可以转化为：从一堆数字中选取若干个，其能得到的和当中不大于且最接近这一堆数的和的一半的数是多少。这是一个 0-1 背包问题。用动态规划求解。</li>
+</ul>
+</li>
+<li>代码<pre><code class="c++">class Solution &#123;
+public:
+    int lastStoneWeightII(vector&lt;int&gt;&amp; stones) &#123;
+        int total = 0;
+        for(int i=0; i&lt;stones.size(); i++) &#123;
+            total += stones[i];
+        &#125;
+
+        int half = total/2;
+        vector&lt;int&gt; possibleMaxSum(half+1, 0);
+        for (int index=0; index&lt;stones.size(); index++) &#123;
+            int currentStone = stones[index];
+            for (int sum=half; sum &gt;= currentStone; sum--) &#123;
+                possibleMaxSum[sum] = max(possibleMaxSum[sum],
+                    currentStone+possibleMaxSum[sum-currentStone]);
+            &#125;
+        &#125;
+        return total - (possibleMaxSum.back() &lt;&lt; 1);
+    &#125;
+&#125;;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><ol start="1105">
+<li>填充书架</li>
+</ol>
+<ul>
+<li>题目：你现在有一个书架宽度 <code>width</code> 是固定的，层数是可以拓展的，然后还有一堆书，这堆书已经放好了顺序，每本书都有自己的厚度 <code>thickness_i</code> 和 高度 <code>height_i</code>。你需要按照顺序将这些书放到书架里面，排放的方式就像图书馆的书一样，即：每一层的书籍都是竖起来的，它们的厚度加起来不能超过书架的宽度，然后每一层的宽度由这一层书当中最高的决定，一层书可以不放满。求最后的书架的最小高度是多少？</li>
+<li>解析：采用典型的动态规划算法，假设 <code>miniHeight[i]</code> 代表存放第 <code>i</code> 本书后书架的最低高度，当新加一本书时，如何推导第 <code>i+1</code> 本书所需的最低高度呢？新加的这一本书一定属于最后一层，则书架的高度一定等于上一层的高度加上本层的高度。我们假设层高为 <code>height</code>，则有 <code>miniHeight[i+1]=miniHeight[x]+height</code> &amp;&amp; <code>sum(thickness[x+1,i+2]) &lt;= width</code> &amp;&amp; <code>x &gt;= -1 &amp;&amp; x &lt;= i</code>。</li>
+<li>代码<pre><code class="c++">class Solution &#123;
+public:
+    int minHeightShelves(vector&lt;vector&lt;int&gt;&gt;&amp; books, int shelfWidth) &#123;
+        vector&lt;int&gt; miniHeight(books.size(), 0);
+        miniHeight[0] = books[0][1];
+
+        for (int i=1; i&lt;books.size(); i++) &#123;
+            int currLevelHeight = books[i][1];
+
+            miniHeight[i] = miniHeight[i-1]+currLevelHeight;
+            int occupyWidth = books[i][0];
+
+            for (int x=i-1; x &gt;= 0; x--) &#123;
+                occupyWidth += books[x][0];
+                currLevelHeight = max(currLevelHeight, books[x][1]);
+                if (occupyWidth &gt; shelfWidth) &#123;
+                    break;
+                &#125;
+                int preLevelTotalHeight = 0;
+                if (x-1 &gt;= 0) &#123;
+                    preLevelTotalHeight = miniHeight[x-1];
+                &#125;
+                miniHeight[i] = min(miniHeight[i], 
+                    preLevelTotalHeight+currLevelHeight);
+            &#125;
+        &#125;
+
+        return miniHeight.back();
+    &#125;
+&#125;;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Rain&#39;s Whisper
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;ame2yuki
+        </div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            <div id="showimg">
+                <img id="showimg-content">
+            </div>
+        </div>
+        <script src="/js/functions.js"></script>
+<script src="/js/particlex.js"></script>
+
+
+
+
+
+
+
+    </body>
+</html>
