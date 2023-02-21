@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>dynamic_programming | Rain&#39;s Whisper</title>
+  <title>Dynamic Programming | Rain&#39;s Whisper</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="最后一块石头的重量 II   题目：给定一堆石头，每个石头有重量 stones[i]。执行以下步骤直到只剩一个石头：任选两个石头进行碰撞相消。如果重量相等，则碰撞以后不会留下任何石头；如果重量不等， 两块石头碰撞以后会留下一块石头，重量为两块石头重量的差值。问：留下的石头的重量最小可能是多少？ 解析： 分析：每次碰撞都会消去2的整数倍的重量，则最终被消去的重量是 2*x，这里 x 是正整数，还">
+  <meta name="description" content="1049. 最后一块石头的重量 II 题目：给定一堆石头，每个石头有重量 stones[i]。执行以下步骤直到只剩一个石头：任选两个石头进行碰撞相消。如果重量相等，则碰撞以后不会留下任何石头；如果重量不等， 两块石头碰撞以后会留下一块石头，重量为两块石头重量的差值。问：留下的石头的重量最小可能是多少？ 解析： 分析：每次碰撞都会消去2的整数倍的重量，则最终被消去的重量是 2*x，这里 x 是正整">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dynamic_programming">
+<meta property="og:title" content="Dynamic Programming">
 <meta property="og:url" content="https://qhsc.github.io/2023/02/21/dynamic-programming/index.html">
 <meta property="og:site_name" content="Rain&#39;s Whisper">
-<meta property="og:description" content="最后一块石头的重量 II   题目：给定一堆石头，每个石头有重量 stones[i]。执行以下步骤直到只剩一个石头：任选两个石头进行碰撞相消。如果重量相等，则碰撞以后不会留下任何石头；如果重量不等， 两块石头碰撞以后会留下一块石头，重量为两块石头重量的差值。问：留下的石头的重量最小可能是多少？ 解析： 分析：每次碰撞都会消去2的整数倍的重量，则最终被消去的重量是 2*x，这里 x 是正整数，还">
-<meta property="og:locale">
+<meta property="og:description" content="1049. 最后一块石头的重量 II 题目：给定一堆石头，每个石头有重量 stones[i]。执行以下步骤直到只剩一个石头：任选两个石头进行碰撞相消。如果重量相等，则碰撞以后不会留下任何石头；如果重量不等， 两块石头碰撞以后会留下一块石头，重量为两块石头重量的差值。问：留下的石头的重量最小可能是多少？ 解析： 分析：每次碰撞都会消去2的整数倍的重量，则最终被消去的重量是 2*x，这里 x 是正整">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-20T17:17:53.000Z">
-<meta property="article:modified_time" content="2023-02-20T17:35:44.262Z">
+<meta property="article:modified_time" content="2023-02-21T15:44:20.447Z">
 <meta property="article:author" content="ame2yuki">
+<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Rain's Whisper" type="application/atom+xml">
@@ -23,6 +24,10 @@
   
     <link rel="shortcut icon" href="/favicon.png">
   
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
   
 <link rel="stylesheet" href="/css/style.css">
@@ -57,12 +62,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qhsc.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qhsc.github.io"></form>
       </div>
     </div>
   </div>
@@ -75,6 +80,10 @@
   <time class="dt-published" datetime="2023-02-20T17:17:53.000Z" itemprop="datePublished">2023-02-21</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programer/">programer</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -83,7 +92,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      dynamic_programming
+      Dynamic Programming
     </h1>
   
 
@@ -91,107 +100,36 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ul>
-<li><ol start="1049">
-<li>最后一块石头的重量 II</li>
-</ol>
-<ul>
+        <hr>
+<h1 id="1049-最后一块石头的重量-II"><a href="#1049-最后一块石头的重量-II" class="headerlink" title="1049. 最后一块石头的重量 II"></a>1049. 最后一块石头的重量 II</h1><ul>
 <li>题目：给定一堆石头，每个石头有重量 <code>stones[i]</code>。执行以下步骤直到只剩一个石头：任选两个石头进行碰撞相消。如果重量相等，则碰撞以后不会留下任何石头；如果重量不等， 两块石头碰撞以后会留下一块石头，重量为两块石头重量的差值。问：留下的石头的重量最小可能是多少？</li>
 <li>解析：<ul>
 <li>分析：每次碰撞都会消去2的整数倍的重量，则最终被消去的重量是 <code>2*x</code>，这里 <code>x</code> 是正整数，还留下 <code>y</code> 重量的石头。则有 <code>sum(stones)=2*x+y</code>。因此，如果我们能把石头分作两堆，并且两堆的差距是最小的，则此时的差距就是 <code>y</code> ，也就是题目所求。</li>
 <li>解法：上述问题可以转化为：从一堆数字中选取若干个，其能得到的和当中不大于且最接近这一堆数的和的一半的数是多少。这是一个 0-1 背包问题。用动态规划求解。</li>
 </ul>
 </li>
-<li>代码<pre><code class="c++">class Solution &#123;
-public:
-    int lastStoneWeightII(vector&lt;int&gt;&amp; stones) &#123;
-        int total = 0;
-        for(int i=0; i&lt;stones.size(); i++) &#123;
-            total += stones[i];
-        &#125;
-
-        int half = total/2;
-        vector&lt;int&gt; possibleMaxSum(half+1, 0);
-        for (int index=0; index&lt;stones.size(); index++) &#123;
-            int currentStone = stones[index];
-            for (int sum=half; sum &gt;= currentStone; sum--) &#123;
-                possibleMaxSum[sum] = max(possibleMaxSum[sum],
-                    currentStone+possibleMaxSum[sum-currentStone]);
-            &#125;
-        &#125;
-        return total - (possibleMaxSum.back() &lt;&lt; 1);
-    &#125;
-&#125;;
-</code></pre>
-</li>
-</ul>
-</li>
+<li>代码  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lastStoneWeightII</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; stones)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> total = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;stones.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            total += stones[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> half = total/<span class="number">2</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">possibleMaxSum</span><span class="params">(half+<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> index=<span class="number">0</span>; index&lt;stones.<span class="built_in">size</span>(); index++) &#123;</span><br><span class="line">            <span class="type">int</span> currentStone = stones[index];</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> sum=half; sum &gt;= currentStone; sum--) &#123;</span><br><span class="line">                possibleMaxSum[sum] = <span class="built_in">max</span>(possibleMaxSum[sum],</span><br><span class="line">                    currentStone+possibleMaxSum[sum-currentStone]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total - (possibleMaxSum.<span class="built_in">back</span>() &lt;&lt; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
-<ul>
-<li><ol start="1105">
-<li>填充书架</li>
-</ol>
-<ul>
+<h1 id="1105-填充书架"><a href="#1105-填充书架" class="headerlink" title="1105. 填充书架"></a>1105. 填充书架</h1><ul>
 <li>题目：你现在有一个书架宽度 <code>width</code> 是固定的，层数是可以拓展的，然后还有一堆书，这堆书已经放好了顺序，每本书都有自己的厚度 <code>thickness_i</code> 和 高度 <code>height_i</code>。你需要按照顺序将这些书放到书架里面，排放的方式就像图书馆的书一样，即：每一层的书籍都是竖起来的，它们的厚度加起来不能超过书架的宽度，然后每一层的宽度由这一层书当中最高的决定，一层书可以不放满。求最后的书架的最小高度是多少？</li>
 <li>解析：采用典型的动态规划算法，假设 <code>miniHeight[i]</code> 代表存放第 <code>i</code> 本书后书架的最低高度，当新加一本书时，如何推导第 <code>i+1</code> 本书所需的最低高度呢？新加的这一本书一定属于最后一层，则书架的高度一定等于上一层的高度加上本层的高度。我们假设层高为 <code>height</code>，则有 <code>miniHeight[i+1]=miniHeight[x]+height</code> &amp;&amp; <code>sum(thickness[x+1,i+2]) &lt;= width</code> &amp;&amp; <code>x &gt;= -1 &amp;&amp; x &lt;= i</code>。</li>
-<li>代码<pre><code class="c++">class Solution &#123;
-public:
-    int minHeightShelves(vector&lt;vector&lt;int&gt;&gt;&amp; books, int shelfWidth) &#123;
-        vector&lt;int&gt; miniHeight(books.size(), 0);
-        miniHeight[0] = books[0][1];
-
-        for (int i=1; i&lt;books.size(); i++) &#123;
-            int currLevelHeight = books[i][1];
-
-            miniHeight[i] = miniHeight[i-1]+currLevelHeight;
-            int occupyWidth = books[i][0];
-
-            for (int x=i-1; x &gt;= 0; x--) &#123;
-                occupyWidth += books[x][0];
-                currLevelHeight = max(currLevelHeight, books[x][1]);
-                if (occupyWidth &gt; shelfWidth) &#123;
-                    break;
-                &#125;
-                int preLevelTotalHeight = 0;
-                if (x-1 &gt;= 0) &#123;
-                    preLevelTotalHeight = miniHeight[x-1];
-                &#125;
-                miniHeight[i] = min(miniHeight[i], 
-                    preLevelTotalHeight+currLevelHeight);
-            &#125;
-        &#125;
-
-        return miniHeight.back();
-    &#125;
-&#125;;
-</code></pre>
-</li>
-</ul>
-</li>
+<li>代码  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minHeightShelves</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; books, <span class="type">int</span> shelfWidth)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">miniHeight</span><span class="params">(books.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">        miniHeight[<span class="number">0</span>] = books[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>; i&lt;books.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> currLevelHeight = books[i][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            miniHeight[i] = miniHeight[i<span class="number">-1</span>]+currLevelHeight;</span><br><span class="line">            <span class="type">int</span> occupyWidth = books[i][<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> x=i<span class="number">-1</span>; x &gt;= <span class="number">0</span>; x--) &#123;</span><br><span class="line">                occupyWidth += books[x][<span class="number">0</span>];</span><br><span class="line">                currLevelHeight = <span class="built_in">max</span>(currLevelHeight, books[x][<span class="number">1</span>]);</span><br><span class="line">                <span class="keyword">if</span> (occupyWidth &gt; shelfWidth) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="type">int</span> preLevelTotalHeight = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span> (x<span class="number">-1</span> &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    preLevelTotalHeight = miniHeight[x<span class="number">-1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">                miniHeight[i] = <span class="built_in">min</span>(miniHeight[i], </span><br><span class="line">                    preLevelTotalHeight+currLevelHeight);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> miniHeight.<span class="built_in">back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qhsc.github.io/2023/02/21/dynamic-programming/" data-id="cled3ll780000jsdm204v6oga" data-title="dynamic_programming" class="article-share-link">Teilen</a>
+      <a data-url="https://qhsc.github.io/2023/02/21/dynamic-programming/" data-id="cled3ll780000jsdm204v6oga" data-title="Dynamic Programming" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
     </footer>
   </div>
   
     
-<nav id="article-nav">
-  
-  
-    <a href="/2023/02/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
   
 </article>
 
@@ -201,18 +139,10 @@ public:
           <aside id="sidebar">
   
     
-
-  
-    
-
-  
-    
-  
-    
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programer/">programer</a></li></ul>
     </div>
   </div>
 
@@ -220,16 +150,41 @@ public:
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2023/02/21/dynamic-programming/">dynamic_programming</a>
-          </li>
-        
-          <li>
-            <a href="/2023/02/21/hello-world/">Hello World</a>
+            <a href="/2023/02/21/dynamic-programming/">Dynamic Programming</a>
           </li>
         
       </ul>
